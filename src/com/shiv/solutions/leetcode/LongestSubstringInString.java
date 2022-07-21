@@ -58,12 +58,10 @@ public class LongestSubstringInString {
 	}
 	
 	public static void main(String[] args) {
-		String outConst = "Longest substring: ";
-		String outConst1 = "Length of ";
 		String[] sArray = new String[] {"pwwkew", "bbbbb", "abcabcbb"};
 		for(String str : sArray) {
-			System.out.println(outConst + getUniqueCharacterSubstring(str));
-			System.out.println(outConst1 + outConst + lengthOfLongestSubstring(str));
+			System.out.println("Longest substring: " + getUniqueCharacterSubstring(str));
+			System.out.println("Length of longest substring: " + lengthOfLongestSubstring(str));
 			System.out.println("*****************************");
 		}
 	}
