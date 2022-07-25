@@ -4,18 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * <pre>
  * @problem
  * <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">Leetcode</a>
  * 
  * @description
- * Find the length of the longest substring without repeating characters.
+ * Find the length of the longest substring without repeating characters.</br>
  * Do not change the sequence of characters.
  * 
  * @explanations
- * <a href="https://www.baeldung.com/java-longest-substring-without-repeated-characters">Baeldung</a>
+ * <a href="https://www.baeldung.com/java-longest-substring-without-repeated-characters">Baeldung</a></br>
  * <a href="https://www.interviewbit.com/blog/longest-substring-without-repeating-characters/">InterviewBit</a>
- * </pre>
  * 
  */
 public class LongestSubstringInString {

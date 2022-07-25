@@ -1,5 +1,7 @@
 package com.shiv.solutions.leetcode;
 
+import com.shiv.solutions.leetcode.model.ListNode;
+
 /*
  * https://leetcode.com/problems/add-two-numbers/
  * 
@@ -14,37 +16,14 @@ package com.shiv.solutions.leetcode;
  * Explanation: 342 + 465 = 807
  * 
  */
-class ListNode {
-	int val;
-	ListNode next;
-	ListNode() {}
-	ListNode(int val) { this.val = val; }
-	ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
-
-public class AddNumbersInLinkedLists {
-	
-	public static void display(ListNode inputNode) {
-    	
-    	if(inputNode == null) {    
-          System.out.println("List is empty!");    
-          return;    
-    	}
-    	
-    	System.out.print("[ ");
-        while(inputNode != null) {
-        	System.out.print(inputNode.val + " ");
-        	inputNode = inputNode.next;
-        }
-        System.out.print("]"); 
-    }
+public class AddNumbersInLinkedLists implements ListNodeOperations{
 	
 	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		
 		System.out.print("\nAdding elements of 1st list: ");
-		display(l1);
+		ListNodeOperations.display(l1);
 		System.out.print(", with elements of 2nd list: ");
-		display(l2);
+		ListNodeOperations.display(l2);
 		
         int sum = 0;
         ListNode resListNode = new ListNode();
@@ -53,25 +32,23 @@ public class AddNumbersInLinkedLists {
         //start iteration
         while(l1!=null || l2!=null || sum!= 0) {
             if(l1 != null) {
-                sum += l1.val;
-                l1 = l1.next;
+                sum += l1.getVal();
+                l1 = l1.getNext();
             }
             
             if(l2 != null) {
-                sum += l2.val;
-                l2 = l2.next;
+                sum += l2.getVal();
+                l2 = l2.getNext();
             }
 
             ListNode newListNode = new ListNode();
-            newListNode.val = sum%10;
-            copyListNode.next = newListNode;
+            newListNode.setVal(sum%10);
+            copyListNode.setNext(newListNode);
             copyListNode = newListNode;
-            
-            
             sum/=10;   //will always be 0 or 1
         }
         
-        return resListNode.next;
+        return resListNode.getNext();
     }
 	
 	public static void main(String[] args) {
@@ -80,20 +57,20 @@ public class AddNumbersInLinkedLists {
 		ListNode t2 = new ListNode(5, new ListNode(6, new ListNode(4, null)));
 		ListNode result = addTwoNumbers(t1, t2);
 		System.out.print("\nAddition result: ");
-		display(result);
+		ListNodeOperations.display(result);
 		
 		ListNode t3 = new ListNode(0, null);
 		ListNode t4 = new ListNode(0, null);
 		result = addTwoNumbers(t3, t4);
 		System.out.print("\nAddition result: ");
-		display(result);
+		ListNodeOperations.display(result);
 		
 		ListNode t5 = new ListNode(9, new ListNode(9, new ListNode(9, 
 				new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, null)))))));
 		ListNode t6 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, null))));
 		result = addTwoNumbers(t5, t6);
 		System.out.print("\nAddition result: ");
-		display(result);
+		ListNodeOperations.display(result);
 	}
 
 }
