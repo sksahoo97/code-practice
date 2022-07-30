@@ -1,7 +1,19 @@
 package com.shiv.solutions.leetcode;
 
+import java.util.HashMap;
+import java.util.Optional;
+
 import com.shiv.solutions.leetcode.model.ListNode;
 
+/**
+ * @author Shivshankar Sahoo
+ * 
+ * This interface contains method that are used to</br>
+ * work effectively with custom linked lists.</br>
+ * 
+ * Model class > com.shiv.solutions.leetcode.model.ListNode</br>
+ *
+ */
 public interface ListNodeOperations {
 
 	static void display(ListNode inputNode) {
@@ -64,6 +76,48 @@ public interface ListNodeOperations {
 		ListNodeOperations.displayListNodeAsString(inputNodeArray[i]);
 		System.out.print("ListNode " + (i+1) + ": ");
 		ListNodeOperations.displayListNodeAsString(inputNodeArray[i+1]);
+	}
+	
+	static boolean linkedListNodeNullCheck(ListNode inputNode) {
+		return (inputNode == null || inputNode.getNext() == null) ? true : false;
+	}
+	
+	static ListNode getOneCyclicLinkedList() {
+		ListNode t1 = new ListNode(3);
+		ListNode t2 = new ListNode(2);
+		ListNode t3 = new ListNode(0);
+		ListNode t4 = new ListNode(-4);
+		t1.setNext(t2);
+		t2.setNext(t3);
+		t3.setNext(t4);
+		t4.setNext(t2);
+		return t1;
+	}
+	
+	static void displayCyclicLinkedListAsString(String printText, ListNode inputNode) {
+		if(Optional.ofNullable(printText).isPresent() && !printText.isEmpty()) {
+    		System.out.println(printText);
+    	}
+		displayCyclicLinkedListAsString(inputNode);
+	}
+	
+	static void displayCyclicLinkedListAsString(ListNode inputNode) {
+		HashMap<ListNode,Boolean> map = new HashMap<>();
+	    if (inputNode != null) {
+	    	do {
+	    		System.out.print(inputNode.getVal() + " ");
+	    		map.put(inputNode, true);
+	    		inputNode = inputNode.getNext();
+	    	} while (!map.keySet().contains(inputNode) && inputNode != null);
+	    	
+	        // printing next 3 repetitive nodes of cyclic linked list
+	        System.out.print("[ ");
+	        for(int i=1;i<=3; i++) {
+	        	System.out.print(inputNode.getVal() + " ");
+	        	inputNode = inputNode.getNext();
+	        }
+	        System.out.println("...]");
+	    }
 	}
 	
 }
