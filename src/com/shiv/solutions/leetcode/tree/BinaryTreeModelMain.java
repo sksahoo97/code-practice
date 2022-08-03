@@ -2,7 +2,7 @@ package com.shiv.solutions.leetcode.tree;
 
 import com.shiv.solutions.leetcode.model.BinaryTreeModel;
 
-public class BinaryTree {
+public class BinaryTreeModelMain {
 
 	public static void main(String[] args) {
 		BinaryTreeModel balancedtree = getBinaryTreeModel();

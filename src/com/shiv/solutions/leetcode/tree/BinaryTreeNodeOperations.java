@@ -5,9 +5,18 @@ import java.util.List;
 
 import com.shiv.solutions.leetcode.model.Node;
 
-public class BinaryTreeOperations {
+/**
+ * @author Shivshankar Sahoo
+ * 
+ * @description
+ * This class contains methods that can be used to</br>
+ * work effectively with custom Binary Tree.</br>
+ * 
+ * Model class > com.shiv.solutions.leetcode.model.Node</br>
+ */
+public abstract class BinaryTreeNodeOperations {
 
-	public static Node[] getBinaryTreeNodes() {
+	public static Node[] getArrayOfBinaryTreeNodes() {
 		Node root = new Node(1);
 		List<Node> childrenNode = new ArrayList<Node>(); 
 		childrenNode.add(new Node(3));

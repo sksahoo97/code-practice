@@ -3,6 +3,14 @@ package com.shiv.solutions.leetcode.model;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * @author Shivshankar Sahoo
+ * 
+ * @description
+ * This class represents a Tree Node.</br>
+ * Each Node has an Integer value and child nodes are stored as list object.</br>
+ *
+ */
 public class Node {
 
 	private int val;

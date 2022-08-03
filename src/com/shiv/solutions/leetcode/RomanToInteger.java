@@ -4,72 +4,85 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * https://leetcode.com/problems/roman-to-integer/
- * @author aweso
+ * @author Shivshankar Sahoo
+ * 
+ * @problem
+ * <a href="https://leetcode.com/problems/roman-to-integer/">Leetcode</a></br>
+ * 
+ * @description
+ * Given a roman numeral, convert it to an integer.</br>
+ * Roman numerals are usually written largest to smallest from left to right.</br>
+ * However, the numeral for four is not IIII. Instead, the number four is written as IV.</br>
+ * Because the one is before the five we subtract it making four.</br>
+ * The same principle applies to the number nine, which is written as IX.</br>
+ * There are six instances where subtraction is used:</br>
+ * I can be placed before V (5) and X (10) to make 4 and 9.</br>
+ * X can be placed before L (50) and C (100) to make 40 and 90.</br>
+ * C can be placed before D (500) and M (1000) to make 400 and 900.</br>
  *
  */
 public class RomanToInteger {
+	
+	static Map<Character, Integer> romanValues;
+	
+	static {
+		romanValues = new HashMap<>();
+		romanValues.put('I', 1);
+		romanValues.put('V', 5);
+		romanValues.put('X', 10);
+		romanValues.put('L', 50);
+		romanValues.put('C', 100);
+		romanValues.put('D', 500);
+		romanValues.put('M', 1000);
+	}
 
 	public static int romanToIntOptimised(String s) {
-        Map<Character,Integer> RomanVal = new HashMap<>();
-        RomanVal.put('I',1);
-        RomanVal.put('V',5);
-        RomanVal.put('X',10);
-        RomanVal.put('L',50);
-        RomanVal.put('C',100);
-        RomanVal.put('D',500);
-        RomanVal.put('M',1000);
         int sum = 0;
-        char[] Array = s.toCharArray();
-        int Lenght = s.length();
-        for(int i = 0 ;i < Lenght - 1; i++) {
-            if(RomanVal.get(Array[i]) >= RomanVal.get(Array[i + 1])) {
-                sum+=RomanVal.get(Array[i]);
-            }else{
-                sum-=RomanVal.get(Array[i]);
+        char[] charArray = s.toCharArray();
+        for(int i=0 ;i<charArray.length-1; i++) {
+            if(romanValues.get(charArray[i]) >= romanValues.get(charArray[i + 1])) {
+                sum += romanValues.get(charArray[i]);
+            } else {
+                sum -= romanValues.get(charArray[i]);
             }    
         }
-        return sum+RomanVal.get(Array[Array.length - 1]);
+        return sum + romanValues.get(charArray[charArray.length - 1]);
     }
 	
 	public static int romanToInt(String s) {
-        Map<Character, Integer> map = new HashMap<>();
-        map.put('I', 1);
-        map.put('V', 5);
-        map.put('X', 10);
-        map.put('L', 50);
-        map.put('C', 100);
-        map.put('D', 500);
-        map.put('M', 1000);
-        
-        int length = s.length();
-        int temp = 0;
+        int num = 0;
         char[] c = s.toCharArray();
-        for(int i=0; i<length; i++) {
-            if(i <= length-2) {
-                if(c[i] == 'I' && (c[i+1] == 'V' || c[i+1] == 'X')) {
-                    temp += map.get(c[i+1]) - map.get(c[i]);
-                    i++;
-                }else if(c[i] == 'X' && (c[i+1] == 'L' || c[i+1] == 'C')) {
-                    temp += map.get(c[i+1]) - map.get(c[i]);
-                    i++;
-                }else if(c[i] == 'C' && (c[i+1] == 'D' || c[i+1] == 'M')) {
-                    temp += map.get(c[i+1]) - map.get(c[i]);
-                    i++;
-                } else
-                	temp += map.get(c[i]);
-            } else
-            	temp += map.get(c[i]);
-            
+        for(int i=0; i<c.length; i++) {
+        	if(i <= c.length-2) {
+        		if(checkForOppositeOrder(c[i], c[i+1])) {
+        			num += romanValues.get(c[i+1]) - romanValues.get(c[i]);
+                	i++;
+        		} else
+        			num += romanValues.get(c[i]);
+        	} else
+            	num += romanValues.get(c[i]);
         }
-        return temp;
+        return num;
     }
+	
+	private static boolean checkForOppositeOrder(char current, char next) {
+		if(current == 'I' && (next == 'V' || next == 'X')) {
+			return true;
+		} else if(current == 'X' && (next == 'L' || next == 'C')) {
+			return true;
+        } else if(current == 'C' && (next == 'D' || next == 'M')) {
+        	return true;
+        }
+		return false;
+	}
 	
 	public static void main(String[] args) {
 		String[] romanNums = new String[] {"III", "LVIII", "MCMXCIV"};
 		for(String roman: romanNums) {
-			System.out.println(romanToInt(roman));
-			System.out.println(romanToIntOptimised(roman));
+			System.out.println("Input Roman number: " + roman);
+			System.out.println("Roman To Int using M1: " + romanToInt(roman));
+			System.out.println("Roman To Int using M2: " + romanToIntOptimised(roman));
+			System.out.println();
 		}
 	}
 
