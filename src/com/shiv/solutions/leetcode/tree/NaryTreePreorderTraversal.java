@@ -16,7 +16,7 @@ import com.shiv.solutions.leetcode.model.Node;
  * Nary-Tree input serialization is represented in their level order traversal.
  *
  */
-public class BinaryTreePreorderTraversal extends BinaryTreeNodeOperations{
+public class NaryTreePreorderTraversal extends NaryTreeNodeOperations {
 
 	public static List<Integer> preorderUsingRecursion(Node root) {
         List<Integer> output = new ArrayList<Integer>();
@@ -62,7 +62,7 @@ public class BinaryTreePreorderTraversal extends BinaryTreeNodeOperations{
     }
 	
 	public static void main(String[] args) {
-		for(Node root : getArrayOfBinaryTreeNodes()) {
+		for(Node root : getArrayOfTreeNodesWithChildAsLists()) {
 			System.out.println("Input Binary Tree Node: \n" + root.toString());
 			//System.out.println("Preorder traversal    : \n" + preorder(root));
 			System.out.println("Preorder traversal: \n" + preorderUsingRecursion(root));

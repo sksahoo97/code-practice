@@ -7,7 +7,7 @@ import java.util.List;
  * @author Shivshankar Sahoo
  * 
  * @description
- * This class represents a Tree Node.</br>
+ * This class represents a N-ary Tree Node.</br>
  * Each Node has an Integer value and child nodes are stored as list object.</br>
  *
  */

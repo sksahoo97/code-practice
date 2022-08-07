@@ -1,9 +1,6 @@
 package com.shiv.solutions.leetcode.tree;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.shiv.solutions.leetcode.model.Node;
+import com.shiv.solutions.leetcode.model.TreeNode;
 
 /**
  * @author Shivshankar Sahoo
@@ -12,55 +9,78 @@ import com.shiv.solutions.leetcode.model.Node;
  * This class contains methods that can be used to</br>
  * work effectively with custom Binary Tree.</br>
  * 
- * Model class > com.shiv.solutions.leetcode.model.Node</br>
+ * Model class > com.shiv.solutions.leetcode.model.TreeNode</br>
  */
-public abstract class BinaryTreeNodeOperations {
+public class BinaryTreeNodeOperations {
 
-	public static Node[] getArrayOfBinaryTreeNodes() {
-		Node root = new Node(1);
-		List<Node> childrenNode = new ArrayList<Node>(); 
-		childrenNode.add(new Node(3));
-		childrenNode.add(new Node(2));
-		childrenNode.add(new Node(4));
-		root.setChildren(childrenNode);
-		childrenNode = new ArrayList<>();
-		childrenNode.add(new Node(5));
-		childrenNode.add(new Node(6));
-		root.getChildren().get(0).setChildren(childrenNode);
+	public static TreeNode[] getArrayOfBinaryTreeNodes() {
+		TreeNode left = new TreeNode(9);
+		TreeNode right = new TreeNode(20);
+		right.setLeft(new TreeNode(15));
+		right.setRight(new TreeNode(7));
+		TreeNode tree = new TreeNode(3, left, right);
 		
-		Node root2 = new Node(1);
-		childrenNode = new ArrayList<>(); 
-		childrenNode.add(new Node(2));
-		childrenNode.add(new Node(3));
-		childrenNode.add(new Node(4));
-		childrenNode.add(new Node(5));
-		root2.setChildren(childrenNode);
-		childrenNode = new ArrayList<>();
-		childrenNode.add(new Node(6));
-		childrenNode.add(new Node(7));
-		root2.getChildren().get(1).setChildren(childrenNode);
-		childrenNode = new ArrayList<>();
-		childrenNode.add(new Node(11));
-		root2.getChildren().get(1).getChildren().get(1).setChildren(childrenNode);
-		childrenNode = new ArrayList<>();
-		childrenNode.add(new Node(14));
-		root2.getChildren().get(1).getChildren().get(1).getChildren().get(0).setChildren(childrenNode);
-		childrenNode = new ArrayList<>();
-		childrenNode.add(new Node(8));
-		root2.getChildren().get(2).setChildren(childrenNode);
-		childrenNode = new ArrayList<>();
-		childrenNode.add(new Node(12));
-		root2.getChildren().get(2).getChildren().get(0).setChildren(childrenNode);
-		childrenNode = new ArrayList<>();
-		childrenNode.add(new Node(9));
-		childrenNode.add(new Node(10));
-		root2.getChildren().get(3).setChildren(childrenNode);
-		childrenNode = new ArrayList<>();
-		childrenNode.add(new Node(13));
-		root2.getChildren().get(3).getChildren().get(0).setChildren(childrenNode);
+		TreeNode tree2 = new TreeNode(7);
 		
-		Node[] nodeArray = new Node[] {root, root2};
-		return nodeArray;
+		TreeNode tree3 = new TreeNode();
+		
+		left = new TreeNode(16);
+		right = new TreeNode(61);
+		left.setLeft(new TreeNode(15));
+		left.setRight(new TreeNode(51));
+		right.setLeft(new TreeNode(17));
+		right.setRight(new TreeNode(71));
+		right.getLeft().setLeft(new TreeNode(18));
+		right.getLeft().setRight(new TreeNode(81));
+		TreeNode tree4 = new TreeNode(12, left, right);
+		
+		TreeNode[] treeNodeArray = new TreeNode[] {tree, tree2, tree3, tree4};
+		return treeNodeArray;
 	}
+	
+	public static String toString(TreeNode tree) {
+		return traversePreOrder(tree);
+	}
+	
+	private static String traversePreOrder(TreeNode root) {
+        if (root == null) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(root.getVal());
+
+        String pointerRight = "└──";
+        String pointerLeft = (root.getRight() != null) ? "├──" : "└──";
+
+        traverseNodes(sb, "", pointerLeft, root.getLeft(), root.getRight() != null);
+        traverseNodes(sb, "", pointerRight, root.getRight(), false);
+
+        return sb.toString();
+    }
+
+    private static void traverseNodes(StringBuilder sb, String padding,
+    		String pointer, TreeNode node, boolean hasRightSibling) {
+        if (node != null) {
+            sb.append("\n");
+            sb.append(padding);
+            sb.append(pointer);
+            sb.append(node.getVal());
+
+            StringBuilder paddingBuilder = new StringBuilder(padding);
+            if (hasRightSibling) {
+                paddingBuilder.append("│  ");
+            } else {
+                paddingBuilder.append("   ");
+            }
+
+            String paddingForBoth = paddingBuilder.toString();
+            String pointerRight = "└──";
+            String pointerLeft = (node.getRight() != null) ? "├──" : "└──";
+
+            traverseNodes(sb, paddingForBoth, pointerLeft, node.getLeft(), node.getRight() != null);
+            traverseNodes(sb, paddingForBoth, pointerRight, node.getRight(), false);
+        }
+    }
 	
 }
