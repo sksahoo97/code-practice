@@ -59,8 +59,7 @@ public abstract class NaryTreeNodeOperations {
 		childrenNode.add(new Node(13));
 		root2.getChildren().get(3).getChildren().get(0).setChildren(childrenNode);
 		
-		Node[] nodeArray = new Node[] {root, root2};
-		return nodeArray;
+		return new Node[] {root, root2};
 	}
 	
 }

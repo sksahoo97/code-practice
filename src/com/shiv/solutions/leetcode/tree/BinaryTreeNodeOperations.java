@@ -34,8 +34,7 @@ public class BinaryTreeNodeOperations {
 		right.getLeft().setRight(new TreeNode(81));
 		TreeNode tree4 = new TreeNode(12, left, right);
 		
-		TreeNode[] treeNodeArray = new TreeNode[] {tree, tree2, tree3, tree4};
-		return treeNodeArray;
+		return new TreeNode[] {tree, tree2, tree3, tree4};
 	}
 	
 	public static String toString(TreeNode tree) {

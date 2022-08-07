@@ -80,7 +80,7 @@ public class BinaryTreeLevelOrderTraversal extends BinaryTreeNodeOperations {
                 result.add(children);
         }
         levelOrderTraverse(root.getLeft(), level + 1, result);
-        levelOrderTraverse(root.getRight(), level + 1,result);
+        levelOrderTraverse(root.getRight(), level + 1, result);
     }
     
     private static List<Integer> exploreChildren(TreeNode root) {
