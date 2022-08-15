@@ -1,5 +1,9 @@
 package com.shiv.solutions.leetcode.tree;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import com.shiv.solutions.leetcode.model.TreeNode;
 
 /**
@@ -12,6 +16,10 @@ import com.shiv.solutions.leetcode.model.TreeNode;
  * Model class > com.shiv.solutions.leetcode.model.TreeNode</br>
  */
 public class BinaryTreeNodeOperations {
+	
+	public static final String P = "p";
+	public static final String Q = "q";
+	public static final String TREE = "tree";
 
 	public static TreeNode[] getArrayOfBinaryTreeNodes() {
 		TreeNode left = new TreeNode(9);
@@ -104,6 +112,53 @@ public class BinaryTreeNodeOperations {
 		TreeNode tree4 = new TreeNode(5, left, right);
     	
     	return new TreeNode[] {tree, tree2, tree3, tree4};
+    }
+    
+    public static ArrayList<Map<String, TreeNode>> getListOfBSTNodeswithInputDescendants() {
+    	Map<String, TreeNode> treeAndDescendants = new LinkedHashMap<>();
+    	ArrayList<Map<String,TreeNode>> treeList = new ArrayList<Map<String, TreeNode>>();
+    	TreeNode left = new TreeNode(2);
+		TreeNode right = new TreeNode(8);
+		left.setLeft(new TreeNode(0));
+		left.setRight(new TreeNode(4));
+		left.getRight().setLeft(new TreeNode(3));
+		left.getRight().setRight(new TreeNode(5));
+		right.setLeft(new TreeNode(7));
+		right.setRight(new TreeNode(9));
+		TreeNode tree = new TreeNode(6, left, right);
+		treeAndDescendants.put(TREE, tree);
+		treeAndDescendants.put(P, new TreeNode(2));
+		treeAndDescendants.put(Q, new TreeNode(8));
+		treeList.add(treeAndDescendants);
+		
+		treeAndDescendants = new LinkedHashMap<>();
+		treeAndDescendants.put(TREE, tree);
+		treeAndDescendants.put(P, new TreeNode(2));
+		treeAndDescendants.put(Q, new TreeNode(4));
+		treeList.add(treeAndDescendants);
+    	
+		left = new TreeNode(1);
+		TreeNode tree2 = new TreeNode(2, left, null);
+		treeAndDescendants = new LinkedHashMap<>();
+		treeAndDescendants.put(TREE, tree2);
+		treeAndDescendants.put(P, new TreeNode(2));
+		treeAndDescendants.put(Q, new TreeNode(1));
+		treeList.add(treeAndDescendants);
+		
+		left = new TreeNode(10);
+		right = new TreeNode(20);
+		left.setLeft(new TreeNode(5));
+		left.setRight(new TreeNode(12));
+		right.setLeft(new TreeNode(18));
+		right.setRight(new TreeNode(25));
+		TreeNode tree3 = new TreeNode(15, left, right);
+		treeAndDescendants = new LinkedHashMap<>();
+		treeAndDescendants.put(TREE, tree3);
+		treeAndDescendants.put(P, new TreeNode(12));
+		treeAndDescendants.put(Q, new TreeNode(18));
+		treeList.add(treeAndDescendants);
+    	
+    	return treeList;
     }
 	
 }
