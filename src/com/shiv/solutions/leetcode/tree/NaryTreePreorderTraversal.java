@@ -63,7 +63,7 @@ public class NaryTreePreorderTraversal extends NaryTreeNodeOperations {
 	
 	public static void main(String[] args) {
 		for(Node root : getArrayOfTreeNodesWithChildAsLists()) {
-			System.out.println("Input Binary Tree Node: \n" + root.toString());
+			System.out.println("Input N-ary Tree Node: \n" + root.toString());
 			//System.out.println("Preorder traversal    : \n" + preorder(root));
 			System.out.println("Preorder traversal: \n" + preorderUsingRecursion(root));
 			System.out.println();
