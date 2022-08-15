@@ -81,5 +81,29 @@ public class BinaryTreeNodeOperations {
             traverseNodes(sb, paddingForBoth, pointerRight, node.getRight(), false);
         }
     }
+    
+    public static TreeNode[] getArrayOfBinarySearchTreeNodes() {
+    	TreeNode left = new TreeNode(1);
+		TreeNode right = new TreeNode(3);
+		TreeNode tree = new TreeNode(2, left, right);
+		
+		left = new TreeNode(10);
+		right = new TreeNode(20);
+		left.setLeft(new TreeNode(5));
+		left.setRight(new TreeNode(12));
+		right.setLeft(new TreeNode(18));
+		right.setRight(new TreeNode(25));
+		TreeNode tree2 = new TreeNode(15, left, right);
+		
+		TreeNode tree3 = new TreeNode();
+		
+		left = new TreeNode(1);
+		right = new TreeNode(4);
+		right.setLeft(new TreeNode(3));
+		right.setRight(new TreeNode(6));
+		TreeNode tree4 = new TreeNode(5, left, right);
+    	
+    	return new TreeNode[] {tree, tree2, tree3, tree4};
+    }
 	
 }
