@@ -1,5 +1,7 @@
 package com.shiv.solutions.leetcode.medium.complexity;
 
+import com.shiv.solutions.leetcode.constants.Constants;
+
 /**
  * @author Shivshankar Sahoo
  * 
@@ -33,9 +35,8 @@ public class ReverseInteger {
 	public static void main(String[] args) {
 		int[] nums = new int[] {123, -123, 120};
 		for(int x : nums) {
-			System.out.println("Input number: " + x);
-			System.out.println("Reversed number: " + reverse(x));
-			System.out.println();
+			Constants.printResultsForSingleMethod("Input number: " + x,
+					"Reversed number: " + reverse(x));
 		}
 	}
 

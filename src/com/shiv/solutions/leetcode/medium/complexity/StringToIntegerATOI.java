@@ -1,5 +1,7 @@
 package com.shiv.solutions.leetcode.medium.complexity;
 
+import com.shiv.solutions.leetcode.constants.Constants;
+
 /**
  * @author Shivshankar Sahoo
  * 
@@ -76,9 +78,8 @@ public class StringToIntegerATOI {
 		String[] stringArray = new String[] {"42", "   -42", "4193 with words", "+",
 				"-+12", "123-", "91283472332", "words and 987"};
 		for(String input : stringArray) {
-			System.out.println("Input String: '" + input + "'");
-			System.out.println("Fetched Integer: " + myAtoi(input));
-			System.out.println();
+			Constants.printResultsForSingleMethod("Input String: '" + input + "'",
+					"Fetched Integer: " + myAtoi(input));
 		}
 	}
 
