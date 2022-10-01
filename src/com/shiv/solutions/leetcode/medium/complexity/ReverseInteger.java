@@ -1,10 +1,10 @@
-package com.shiv.solutions.leetcode;
+package com.shiv.solutions.leetcode.medium.complexity;
 
 /**
  * @author Shivshankar Sahoo
  * 
  * @problem
- * <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/">Leetcode</a></br>
+ * <a href="https://leetcode.com/problems/reverse-integer/">Leetcode</a></br>
  * 
  * @description
  * Given a signed 32-bit integer x, return x with its digits reversed.</br>
