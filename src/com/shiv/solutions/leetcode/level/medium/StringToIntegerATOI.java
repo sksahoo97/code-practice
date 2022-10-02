@@ -1,4 +1,4 @@
-package com.shiv.solutions.leetcode.medium.complexity;
+package com.shiv.solutions.leetcode.level.medium;
 
 import com.shiv.solutions.leetcode.constants.Constants;
 
