@@ -28,13 +28,14 @@ bin/
 .settings
 .classpath
 
-# User-specific stuff
+# User-specific stuff for IDE
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
 
+# Intellij IDE
 .idea/artifacts
 .idea/compiler.xml
 .idea/jarRepositories.xml
