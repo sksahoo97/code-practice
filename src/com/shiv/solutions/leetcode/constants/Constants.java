@@ -7,6 +7,7 @@ public class Constants {
 	}
 
 	public static final String NEW_LINE = "\n";
+	public static final String ASTERISK_LINE = "****************************************************************************";
 	
 	public static void printResultsForSingleMethod(String inputText, String ouputText) {
 		System.out.println(inputText);

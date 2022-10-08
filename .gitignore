@@ -27,3 +27,22 @@ bin/
 .project
 .settings
 .classpath
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+.idea/artifacts
+.idea/compiler.xml
+.idea/jarRepositories.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/.gitignore
+.idea/*.iml
+.idea/modules
+*.iml
+*.ipr
